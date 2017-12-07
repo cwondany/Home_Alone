@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IDamageable {
+public interface IMovable {
 
     // Use this for initialization
     void TakeHit(float damage, RaycastHit hit);

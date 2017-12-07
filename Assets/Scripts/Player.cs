@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
-[RequireComponent(typeof(GunController))]
+[RequireComponent(typeof(ObjectController))]
 
-public class Player : LivingEntity
+
+public class Player : MonoBehaviour
 {
     public float moveSpeed = 5;
 
     Camera viewCamera;
     PlayerController controller;
-    GunController gunController;
+    ObjectController objectController;
 
-    protected override void Start()
+     void Start()
     {
-        base.Start();
         controller = GetComponent<PlayerController>();
-        gunController = GetComponent<GunController>();
+        objectController = GetComponent<ObjectController>();
         viewCamera = Camera.main;
     }
 
@@ -39,10 +38,10 @@ public class Player : LivingEntity
             controller.LookAt(point);
         }
 
-        // Weapon input
+        // Object input
         if (Input.GetMouseButton(0))
         {
-            gunController.Shoot();
+           // objectController.TakeObject();
         }
     }
 }
