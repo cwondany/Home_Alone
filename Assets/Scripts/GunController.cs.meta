@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a9109042ab2afc6459700b5b65567628
+timeCreated: 1512401550
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - weaponHold: {instanceID: 0}
+  - startingGun: {fileID: 114893930212969486, guid: 5cc3344cabde9274ea9770ec6abae28e,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
