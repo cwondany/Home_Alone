@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
-[RequireComponent(typeof(ObjectController))]
-
+//[RequireComponent(typeof(GunController))]
 
 public class Player : MonoBehaviour
 {
@@ -10,13 +10,16 @@ public class Player : MonoBehaviour
 
     Camera viewCamera;
     PlayerController controller;
-    ObjectController objectController;
+    private Transform myTransform;
+    // GunController gunController;
 
-     void Start()
+    void Start()
     {
+
         controller = GetComponent<PlayerController>();
-        objectController = GetComponent<ObjectController>();
+        // gunController = GetComponent<GunController>();
         viewCamera = Camera.main;
+        myTransform = transform;
     }
 
     void Update()
@@ -27,21 +30,23 @@ public class Player : MonoBehaviour
         controller.Move(moveVelocity);
 
         // Look input
-        Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayDistance;
+        float horizontal = Input.GetAxis("Horizontal") * moveSpeed;
+        float vertical = Input.GetAxis("Vertical") * moveSpeed;
+        Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
 
-        if (groundPlane.Raycast(ray, out rayDistance))
+        // If statement to check player is moving
+        if (moveDirection != (new Vector3(0, 0, 0)))
         {
-            Vector3 point = ray.GetPoint(rayDistance);
-            //Debug.DrawLine(ray.origin,point,Color.red);
-            controller.LookAt(point);
-        }
+            // Quaternion to rotate the player
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            myTransform.rotation = Quaternion.Slerp(myTransform.rotation, newRotation, moveSpeed * Time.deltaTime);
 
-        // Object input
-        if (Input.GetMouseButton(0))
-        {
-           // objectController.TakeObject();
+
+            // Object input
+            if (Input.GetMouseButton(0))
+            {
+                //pickUp();
+            }
         }
     }
 }
