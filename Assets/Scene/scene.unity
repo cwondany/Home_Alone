@@ -232,6 +232,11 @@ Prefab:
     - {fileID: 114164298818438648, guid: 3844e4b526b1d8346bc8e58e315e07bc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3844e4b526b1d8346bc8e58e315e07bc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &58379487 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1150102161449542, guid: 3844e4b526b1d8346bc8e58e315e07bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 58379486}
 --- !u!1001 &341389748
 Prefab:
   m_ObjectHideFlags: 0
@@ -309,7 +314,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -373,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421940863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 0.59, z: -0.57}
+  m_LocalPosition: {x: -1.88, y: 0.5, z: -0.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -391,6 +396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 2034727518}
+  item: {fileID: 421940863}
+  tempParent: {fileID: 58379487}
 --- !u!1 &532673288
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 2034727518}
+  item: {fileID: 532673288}
+  tempParent: {fileID: 58379487}
 --- !u!54 &532673290
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -434,7 +443,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -498,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 532673288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.35, y: 0.59, z: -0.57}
+  m_LocalPosition: {x: 2.35, y: 0.5, z: -0.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -562,7 +571,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 779788895}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 04863f58e0fcfb842a626aa379c0f36e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

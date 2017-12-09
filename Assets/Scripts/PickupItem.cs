@@ -6,37 +6,59 @@ public class PickupItem : MonoBehaviour
 {
 
     public Transform hand;
-    bool carryItem = true;
+    public GameObject item;
+    public GameObject tempParent;
+
+    bool carryItem = false;
 
     void Start()
     {
-
+        //item.GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+      
+    }
+
+    private void OnMouseDown()
+    {
+        if (!carryItem)
         {
-            GetComponent<Collider>().transform.parent = null;
+
+            //item.GetComponent<Rigidbody>().useGravity = false;
+            item.GetComponent<Rigidbody>().isKinematic = true;
+            item.transform.position = hand.transform.position;
+            item.transform.rotation = hand.transform.rotation;
+            item.transform.parent = tempParent.transform;
             carryItem = true;
         }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (carryItem)
+        else
         {
-
-            {
-                if (GetComponent<Collider>().CompareTag("PickupAble"))
-                {
-                    GetComponent<Collider>().transform.parent = (hand);
-                    carryItem = false;
-
-                }
-
-
-            }
+            //item.GetComponent<Rigidbody>().useGravity = true; 
+            item.GetComponent<Rigidbody>().isKinematic = false;
+            item.transform.parent = null;
+            item.transform.position = hand.transform.position;
+            carryItem = false;
 
         }
+       
     }
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKeyDown("q"))
+        {
+            Destroy(gameObject);
+        }
+
+    }
+        void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.isKey)
+            Debug.Log("Detected key code: " + e.keyCode);
+
+    }
+
 }
+
